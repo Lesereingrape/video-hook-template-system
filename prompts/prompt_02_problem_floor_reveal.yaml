@@ -1,0 +1,21 @@
+prompt_id: prompt_02_problem_floor_reveal
+source_template_id: electronics_problem_to_product_floor_006
+purpose: executable 0-3 second generation prompt
+product_inputs:
+  debris_type: short pale pet hair
+  floor_material: dark hardwood
+  device_form: low round robot vacuum
+prompt: >-
+  Generate exactly a 3-second vertical e-commerce video, limited to the opening hook.
+  Use a locked low-angle close floor shot on dark hardwood. At 0.0 seconds show one
+  small, bounded line of short pale pet hair in the foreground and an empty entry lane
+  from the right; do not show a pet, hands, or a second mess. Hold the problem from 0.0
+  to 0.8 seconds. From 0.8 to 2.0 seconds a low round robot vacuum enters from the right
+  on a straight path and becomes clearly identifiable by 2.0 seconds. From 2.0 to 3.0
+  seconds its front edge makes first contact with the hair. Keep debris count and floor
+  geometry stable. No turn, navigation sequence, full cleanup, logo, readable text,
+  subtitles, pet, hands, extra mess, or CTA. Stop at first contact at 3.0 seconds.
+review_anchor:
+  must_be_visible_by_second: 2.0
+  attention_event_deadline: 3.0
+  independent_checks: [problem legibility by 0.8 seconds, product identity by 2.0 seconds, first contact by 3.0 seconds]

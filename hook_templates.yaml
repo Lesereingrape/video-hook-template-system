@@ -1,0 +1,491 @@
+# Final catalog: 10 reusable opening-three-second Hook Templates.
+# Category: consumer_electronics. Each template is traceable to the audit and
+# taxonomy, and intentionally stops before any full-ad story or CTA.
+metadata:
+  status: v1
+  category: consumer_electronics
+  template_count: 10
+  time_boundary_seconds: 3.0
+  schema: schema/hook_template_schema.yaml
+  audit_source: audit/audit_matrix.csv
+
+templates:
+  - template_id: electronics_alignment_snap_001
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H07]
+      taxonomy_patterns: [product_present_proof, motion_interrupt]
+      opportunity_gaps: [single_action_proof]
+    hook_type: product_present_proof
+    objective:
+      attention_goal: Make a satisfying functional alignment visible immediately.
+      single_hook_action: A phone snaps into alignment with a charging surface.
+    applicable_products: [wireless charger, magnetic charging stand, charging dock]
+    exclusions: [products requiring readable screen UI, loose cables as the main action]
+    product_presence:
+      mode: present_first_frame
+      visible_by_second: 0.0
+      recognition_standard: The charger silhouette and phone are identifiable in the opening frame.
+    first_frame:
+      description: Close tabletop view of the charger and phone separated by a short visible gap.
+      composition: Charger in lower center, phone entering from upper edge, uncluttered matte surface.
+      required_elements: [one charger, one phone, visible alignment path]
+      forbidden_elements: [brand logo, readable screen content, extra devices]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.7, action: Phone begins a short straight approach toward charger, product_state: Both products visible, review_checkpoint: Motion begins immediately and remains legible.}
+      - {start_seconds: 0.7, end_seconds: 1.5, action: Phone makes one controlled alignment contact, product_state: Charger and phone remain intact, review_checkpoint: Contact occurs without bounce or deformation.}
+      - {start_seconds: 1.5, end_seconds: 3.0, action: Hold the aligned pair with a subtle push-in, product_state: Product identity remains clear, review_checkpoint: Alignment is readable without UI text.}
+    camera:
+      framing: close tabletop product shot
+      movement: 5 percent forward push-in after contact
+      focus_behavior: Keep charger and phone sharp during contact
+      movement_limits: No orbit, whip pan, rack focus, or camera shake
+    attention_mechanism:
+      primary: satisfying precision alignment
+      viewer_question: Will the phone land exactly on the charger?
+      measurable_attention_event: Contact and alignment are visible before 1.5 seconds.
+    prompt_variables:
+      - {name: product_shape, description: Charger form factor, example: round magnetic puck, required: true}
+      - {name: surface_material, description: Tabletop material, example: warm light wood, required: true}
+      - {name: phone_color, description: Phone back color, example: graphite, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no notification UI, no extra devices, no cable tangles]
+    generation_risks:
+      - {risk: Phone and charger merge at contact, severity: medium, mitigation: Use one straight approach and a 0.3 second hold after contact.}
+      - {risk: Screen generates distracting text, severity: high, mitigation: Show the phone from the back or use a blank dark screen.}
+    review_rules:
+      keep_criteria: [Both products are identifiable at 0.0 seconds, Alignment contact is clear by 1.5 seconds]
+      revise_criteria: [Contact is visible but product framing is too wide, Alignment occurs but needs a slower final approach]
+      drop_criteria: [No alignment event by 2.0 seconds, Any extra device or readable text becomes the focal point]
+
+  - template_id: electronics_hinge_fold_reveal_002
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H10]
+      taxonomy_patterns: [product_present_proof, motion_interrupt]
+      opportunity_gaps: [single_action_proof, motion_scale]
+    hook_type: product_present_proof
+    objective:
+      attention_goal: Turn one mechanical adjustment into a visible proof moment.
+      single_hook_action: A stand folds from flat to a stable viewing angle.
+    applicable_products: [tablet stand, laptop stand, phone stand]
+    exclusions: [multi-hinge furniture, products needing a person to remain in frame]
+    product_presence:
+      mode: present_first_frame
+      visible_by_second: 0.0
+      recognition_standard: Stand and device are distinguishable as separate objects.
+    first_frame:
+      description: Side three-quarter view of a folded stand and blank-screen tablet on a clean desk.
+      composition: Hinge centered, tablet slightly behind, enough negative space for the fold.
+      required_elements: [one stand, one device, visible hinge axis]
+      forbidden_elements: [readable screen, extra hinges, hands covering hinge]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.8, action: Stand starts folded and tablet rests beside it, product_state: Both objects stable, review_checkpoint: Hinge and starting state are visible.}
+      - {start_seconds: 0.8, end_seconds: 1.8, action: Stand opens once to a defined angle, product_state: Hinge remains consistent, review_checkpoint: One continuous fold is visible.}
+      - {start_seconds: 1.8, end_seconds: 3.0, action: Tablet settles onto the stand and camera holds, product_state: Stable support position, review_checkpoint: Device is visibly supported without text.}
+    camera:
+      framing: side three-quarter desk shot
+      movement: fixed camera with a 3 percent push-in during the fold
+      focus_behavior: Hinge remains sharp; screen stays visually blank
+      movement_limits: One hinge action only; no 360-degree rotation
+    attention_mechanism:
+      primary: mechanical transformation
+      viewer_question: How does the flat object become a usable stand?
+      measurable_attention_event: The angle change is visible between 0.8 and 1.8 seconds.
+    prompt_variables:
+      - {name: stand_material, description: Primary stand material, example: brushed aluminum, required: true}
+      - {name: device_type, description: Device supported, example: 11-inch tablet, required: true}
+      - {name: final_angle, description: Approximate viewing angle, example: 65 degrees, required: true}
+    negative_constraints: [no logos, no readable screen content, no subtitles, no extra hinges, no impossible folding, no hand occlusion]
+    generation_risks:
+      - {risk: Hinge geometry changes during movement, severity: high, mitigation: Use one visible hinge and a short single-axis fold.}
+      - {risk: Screen text distracts from proof, severity: medium, mitigation: Require blank dark screen with no interface.}
+    review_rules:
+      keep_criteria: [Fold begins after the first frame and completes by 1.8 seconds, Device is stable on the final angle at 3.0 seconds]
+      revise_criteria: [Mechanism is understandable but angle is too subtle, Device remains stable but the hinge is partly hidden]
+      drop_criteria: [Stand changes into a different object, Fold cannot be understood as one continuous action]
+
+  - template_id: electronics_light_switch_snap_003
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H03]
+      taxonomy_patterns: [transformation_first, product_present_proof]
+      opportunity_gaps: [single_action_proof]
+    hook_type: transformation_first
+    objective:
+      attention_goal: Create an immediate before/after contrast with one light-state change.
+      single_hook_action: Desk lamp switches from off to a clearly illuminated pool.
+    applicable_products: [desk lamp, monitor light bar, smart bulb]
+    exclusions: [multi-room lighting scenes, color sequences, text-dependent smart-home controls]
+    product_presence:
+      mode: present_first_frame
+      visible_by_second: 0.0
+      recognition_standard: Lamp body is visible before the light changes.
+    first_frame:
+      description: Lamp is visible on a dim desk with a small set of neutral objects.
+      composition: Lamp on right third, dark work surface, empty wall behind.
+      required_elements: [one lamp, one desk, visible dark starting state]
+      forbidden_elements: [multiple lamps, readable monitor, changing wall geometry]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.6, action: Hold the dim desk and lamp silhouette, product_state: Lamp identifiable but off, review_checkpoint: Starting state is clear.}
+      - {start_seconds: 0.6, end_seconds: 1.0, action: Lamp switches on in one clean transition, product_state: Same lamp and desk, review_checkpoint: Light change is instantaneous and localized.}
+      - {start_seconds: 1.0, end_seconds: 3.0, action: Hold illuminated pool with tiny forward push, product_state: Stable lighting, review_checkpoint: Before and after states are easy to compare.}
+    camera:
+      framing: locked medium desk shot
+      movement: 4 percent forward push after switch-on
+      focus_behavior: Keep lamp edge and lit desk area in focus
+      movement_limits: No exposure pulsing, color cycling, or scene transition
+    attention_mechanism:
+      primary: abrupt lighting contrast
+      viewer_question: What changes when this small object turns on?
+      measurable_attention_event: Illuminated area appears by 1.0 second.
+    prompt_variables:
+      - {name: lamp_form, description: Lamp silhouette, example: slim arch lamp, required: true}
+      - {name: light_temperature, description: Final light color, example: neutral white, required: true}
+      - {name: desk_context, description: Minimal desk setting, example: clean home office, required: true}
+    negative_constraints: [no logos, no readable monitor text, no subtitles, no flicker, no extra light sources, no room transition]
+    generation_risks:
+      - {risk: Entire exposure changes instead of localized lamp light, severity: medium, mitigation: Keep background dim and require a localized light pool.}
+      - {risk: Lamp silhouette changes at switch-on, severity: high, mitigation: Lock the lamp position and shape before and after transition.}
+    review_rules:
+      keep_criteria: [Lamp is identifiable before switch-on, Localized light change is visible by 1.0 second]
+      revise_criteria: [Light change is clear but product edge is soft, Scene is consistent but the contrast is too weak]
+      drop_criteria: [Whole scene changes instead of lamp state, Lamp is no longer identifiable after switch-on]
+
+  - template_id: electronics_liquid_vortex_macro_004
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H09]
+      taxonomy_patterns: [transformation_first, texture_first]
+      opportunity_gaps: [texture_material_first, single_action_proof]
+    hook_type: texture_first
+    objective:
+      attention_goal: Use a tactile liquid movement to interrupt scrolling before functional proof.
+      single_hook_action: A portable blender creates one visible vortex around the blade area.
+    applicable_products: [portable blender, personal blender, electric mixer]
+    exclusions: [open blades, boiling liquids, more than three ingredients]
+    product_presence:
+      mode: enters_during_hook
+      visible_by_second: 2.0
+      recognition_standard: Blender vessel and lid are recognizable by the deadline, even if the motor base enters late.
+    first_frame:
+      description: Macro view of a controlled fruit-colored liquid surface inside a transparent vessel.
+      composition: Liquid texture fills frame; vessel rim is visible; no label faces camera.
+      required_elements: [transparent vessel, limited liquid, visible rim]
+      forbidden_elements: [floating text, extra ingredients, exposed blade, brand mark]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.9, action: Liquid begins a small circular pull, product_state: Vessel implied by rim, review_checkpoint: Texture motion begins within first second.}
+      - {start_seconds: 0.9, end_seconds: 2.0, action: Vortex deepens while vessel remains stable, product_state: Vessel increasingly identifiable, review_checkpoint: No ingredient multiplication or liquid teleportation.}
+      - {start_seconds: 2.0, end_seconds: 3.0, action: Motor base slides into lower frame and aligns with vessel, product_state: Blender identifiable, review_checkpoint: Product reveal is clean and does not stop the motion abruptly.}
+    camera:
+      framing: locked macro close-up
+      movement: 2 percent push-in only during vortex
+      focus_behavior: Focus on liquid surface then settle on vessel rim and base
+      movement_limits: No handheld shake, no cut, no extreme zoom, no exposed blade close-up
+    attention_mechanism:
+      primary: unexpected tactile liquid motion
+      viewer_question: What is creating this controlled vortex?
+      measurable_attention_event: Liquid motion is visible before 0.9 seconds and product is identifiable by 2.0 seconds.
+    prompt_variables:
+      - {name: liquid_color, description: Dominant liquid color, example: berry red, required: true}
+      - {name: vessel_shape, description: Vessel silhouette, example: clear tapered cup, required: true}
+      - {name: base_finish, description: Motor base finish, example: matte black, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no exposed blade, no extra ingredients, no splashing outside vessel]
+    generation_risks:
+      - {risk: Liquid shape and ingredient count drift, severity: high, mitigation: Use one uniform liquid and no visible ingredient chunks.}
+      - {risk: Product reveal is confused with a generic glass, severity: medium, mitigation: Require a distinctive vessel rim and motor base reveal by 2.0 seconds.}
+    review_rules:
+      keep_criteria: [Liquid motion begins before 0.9 seconds, Blender is identifiable by 2.0 seconds and remains intact]
+      revise_criteria: [Texture motion works but reveal occurs between 2.0 and 2.5 seconds, Vortex is visible but too weak to notice]
+      drop_criteria: [No motion in the first second, Vessel never becomes identifiable, Liquid leaves the container]
+
+  - template_id: electronics_cable_snap_order_005
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H07]
+      taxonomy_patterns: [product_present_proof, motion_interrupt]
+      opportunity_gaps: [single_action_proof, reviewable_negative_constraints]
+    hook_type: motion_interrupt
+    objective:
+      attention_goal: Replace cable clutter with one fast, legible cable organization action.
+      single_hook_action: A charging cable snaps into a compact organizer channel.
+    applicable_products: [cable organizer, magnetic cable clip, desk charging accessory]
+    exclusions: [many loose cables, cable knots, products needing readable labels]
+    product_presence:
+      mode: present_first_frame
+      visible_by_second: 0.0
+      recognition_standard: Organizer and one cable are visible in the first frame.
+    first_frame:
+      description: One loose cable crosses a clean desk toward a small organizer channel.
+      composition: Cable diagonal creates motion path; organizer sits in lower third.
+      required_elements: [one cable, one organizer, clear channel]
+      forbidden_elements: [cable pile, extra chargers, text labels, tangled loops]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.6, action: Cable tip moves toward organizer, product_state: Cable and organizer clear, review_checkpoint: Action starts immediately.}
+      - {start_seconds: 0.6, end_seconds: 1.2, action: Cable seats into one channel with a small snap, product_state: Cable retained, review_checkpoint: Snap is physical and singular.}
+      - {start_seconds: 1.2, end_seconds: 3.0, action: Hold organized cable with slight lateral slide, product_state: Desk is visibly cleaner, review_checkpoint: No new cable appears.}
+    camera:
+      framing: close overhead desk shot
+      movement: 5 percent lateral slide following cable tip
+      focus_behavior: Keep cable tip and organizer channel sharp
+      movement_limits: One cable only; no whip movement or knot animation
+    attention_mechanism:
+      primary: fast order-from-clutter movement
+      viewer_question: Will the loose cable land cleanly in the channel?
+      measurable_attention_event: Cable seats by 1.2 seconds.
+    prompt_variables:
+      - {name: organizer_form, description: Organizer shape, example: low-profile magnetic clip, required: true}
+      - {name: cable_color, description: Cable color, example: white, required: true}
+      - {name: desk_surface, description: Desk material, example: pale oak, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no cable knots, no extra cables, no floating objects]
+    generation_risks:
+      - {risk: Cable duplicates or changes thickness, severity: high, mitigation: Specify exactly one cable with a fixed visible endpoint.}
+      - {risk: Organizer channel does not retain cable, severity: medium, mitigation: Use a shallow straight channel and a slow final 0.2 second seat.}
+    review_rules:
+      keep_criteria: [One cable is visible from start to finish, Cable seats into organizer by 1.2 seconds]
+      revise_criteria: [Cable is retained but snap is not legible, Product remains intact but final frame is too cluttered]
+      drop_criteria: [Cable duplicates or disappears, No clear retention action occurs by 2.0 seconds]
+
+  - template_id: electronics_problem_to_product_floor_006
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H05]
+      taxonomy_patterns: [problem_first_reveal, motion_interrupt]
+      opportunity_gaps: [delayed_reveal_deadline, single_action_proof]
+    hook_type: problem_first_reveal
+    objective:
+      attention_goal: Establish one visible floor problem, then reveal the cleaning device entering.
+      single_hook_action: Robot vacuum crosses into frame and makes first contact with the mess.
+    applicable_products: [robot vacuum, cordless floor cleaner, compact vacuum]
+    exclusions: [large rooms, multiple mess types, full cleaning demonstrations]
+    product_presence:
+      mode: enters_during_hook
+      visible_by_second: 2.0
+      recognition_standard: Robot vacuum body and front edge are identifiable by 2.0 seconds.
+    first_frame:
+      description: Tight low-angle floor view of one small, bounded line of debris.
+      composition: Debris in foreground path; empty entry lane from right; no product initially visible.
+      required_elements: [one bounded debris patch, clean entry lane, floor texture]
+      forbidden_elements: [pet, hands, multiple rooms, large pile, text overlay]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.8, action: Camera holds on the single debris patch, product_state: Product not yet visible, review_checkpoint: Problem is recognizable within first 0.8 seconds.}
+      - {start_seconds: 0.8, end_seconds: 2.0, action: Robot vacuum enters from right toward debris, product_state: Product becomes identifiable, review_checkpoint: Device crosses the reveal deadline.}
+      - {start_seconds: 2.0, end_seconds: 3.0, action: Front edge makes contact with the first part of debris, product_state: Product and problem both visible, review_checkpoint: Only first contact is shown, not a full clean-up story.}
+    camera:
+      framing: low-angle close floor shot
+      movement: locked camera; device provides the movement
+      focus_behavior: Keep debris and front edge in the same focus plane
+      movement_limits: Straight path only; no navigation decisions or turns
+    attention_mechanism:
+      primary: recognizable pain state followed by product entry
+      viewer_question: What will deal with this mess?
+      measurable_attention_event: Product is identifiable by 2.0 seconds and reaches debris by 3.0 seconds.
+    prompt_variables:
+      - {name: debris_type, description: One visible debris type, example: short pale pet hair, required: true}
+      - {name: floor_material, description: Floor surface, example: dark hardwood, required: true}
+      - {name: device_form, description: Vacuum silhouette, example: low round robot vacuum, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no pet, no hands, no extra mess, no full clean-up result]
+    generation_risks:
+      - {risk: Device enters too late or is not recognizable, severity: high, mitigation: Set a 2.0 second reveal deadline and use a distinct silhouette.}
+      - {risk: Debris multiplies or changes location, severity: high, mitigation: Use one bounded patch and a locked camera.}
+    review_rules:
+      keep_criteria: [Debris is clear by 0.8 seconds, Device is identifiable and contacts debris by 3.0 seconds]
+      revise_criteria: [Problem and device are both clear but contact is weak, Device appears between 2.0 and 2.3 seconds]
+      drop_criteria: [Device is not identifiable by 2.0 seconds, Scene shows a full cleaning result or multiple problems]
+
+  - template_id: electronics_screenless_spec_pulse_007
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H07, H10]
+      taxonomy_patterns: [product_present_proof, motion_interrupt]
+      opportunity_gaps: [reviewable_negative_constraints, single_action_proof]
+    hook_type: product_present_proof
+    objective:
+      attention_goal: Show a physical product response without relying on screen text or UI.
+      single_hook_action: A physical indicator light pulses once when the device is connected.
+    applicable_products: [charging hub, smart speaker, desktop accessory, connected device]
+    exclusions: [products whose only proof is an app screen, multiple indicator states]
+    product_presence:
+      mode: present_first_frame
+      visible_by_second: 0.0
+      recognition_standard: Device body and connection point are visible from first frame.
+    first_frame:
+      description: Device sits beside a single connector with a blank or turned-away screen.
+      composition: Connection point in center, device body in lower half, dark neutral background.
+      required_elements: [one device, one connector, one physical indicator]
+      forbidden_elements: [phone UI, readable display, multiple cables, status labels]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.8, action: Connector approaches device port, product_state: Device and connector visible, review_checkpoint: Physical setup is clear.}
+      - {start_seconds: 0.8, end_seconds: 1.3, action: Connector seats and indicator pulses once, product_state: Device responds physically, review_checkpoint: Pulse is localized and singular.}
+      - {start_seconds: 1.3, end_seconds: 3.0, action: Hold the lit device with a small push-in, product_state: Stable single indicator, review_checkpoint: No UI is needed to understand proof.}
+    camera:
+      framing: close three-quarter product shot
+      movement: 3 percent forward push after indicator pulse
+      focus_behavior: Focus on port and indicator; suppress background detail
+      movement_limits: One connector and one pulse only; no color cycling
+    attention_mechanism:
+      primary: physical proof without explanatory text
+      viewer_question: Did the connection trigger a response?
+      measurable_attention_event: Indicator pulse follows connection by 0.5 seconds.
+    prompt_variables:
+      - {name: device_form, description: Device shape, example: compact charging hub, required: true}
+      - {name: indicator_color, description: Single indicator color, example: soft blue, required: true}
+      - {name: connector_type, description: Connector form, example: USB-C plug, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no app UI, no extra cables, no repeated pulses]
+    generation_risks:
+      - {risk: Indicator appears in multiple places, severity: medium, mitigation: Specify one small indicator beside the port.}
+      - {risk: Connector changes form between frames, severity: high, mitigation: Use a fixed connector silhouette and straight insertion path.}
+    review_rules:
+      keep_criteria: [Connection and device are clear from first frame, One localized pulse occurs after connection]
+      revise_criteria: [Physical proof is clear but pulse timing is delayed, Device is intact but indicator is too subtle]
+      drop_criteria: [Proof depends on generated screen text, Multiple indicators or repeated pulses appear]
+
+  - template_id: electronics_macro_surface_push_008
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H03, H09]
+      taxonomy_patterns: [texture_first, transformation_first]
+      opportunity_gaps: [texture_material_first, motion_scale]
+    hook_type: texture_first
+    objective:
+      attention_goal: Make a premium electronics material feel tactile before revealing its function.
+      single_hook_action: Camera pushes across one surface detail and reveals the product silhouette.
+    applicable_products: [headphones, smart watch, camera accessory, premium speaker]
+    exclusions: [products with no stable surface detail, products requiring tiny text to identify]
+    product_presence:
+      mode: implied_then_revealed
+      visible_by_second: 2.2
+      recognition_standard: Surface detail is followed by enough silhouette and context to identify the product by 2.2 seconds.
+    first_frame:
+      description: Extreme macro of one stable product surface with a visible edge but no logo.
+      composition: Texture fills frame; edge direction leads toward eventual reveal.
+      required_elements: [one material surface, one product edge, controlled light]
+      forbidden_elements: [logo close-up, readable markings, unrelated texture, liquid on electronics]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 1.0, action: Slow controlled push across material surface, product_state: Product implied, review_checkpoint: Texture is visibly moving relative to frame.}
+      - {start_seconds: 1.0, end_seconds: 2.2, action: Camera widens to show product silhouette, product_state: Product becomes identifiable, review_checkpoint: Reveal reaches deadline.}
+      - {start_seconds: 2.2, end_seconds: 3.0, action: Hold final detail-and-silhouette composition, product_state: Product stable, review_checkpoint: No feature story or text begins.}
+    camera:
+      framing: macro to close product reveal
+      movement: 8 percent linear push-out with no rotation
+      focus_behavior: Controlled focus pull from surface to silhouette
+      movement_limits: One continuous move; no logo focus, spin, or cut
+    attention_mechanism:
+      primary: tactile material detail and scale change
+      viewer_question: What object has this surface and shape?
+      measurable_attention_event: Texture movement begins in first second and product is identifiable by 2.2 seconds.
+    prompt_variables:
+      - {name: material, description: Dominant product material, example: brushed dark aluminum, required: true}
+      - {name: product_silhouette, description: Product outline, example: over-ear headphone arc, required: true}
+      - {name: light_direction, description: Light direction across surface, example: narrow light from upper left, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no unrelated texture, no liquid, no sudden camera cut]
+    generation_risks:
+      - {risk: Macro texture becomes a generic unrelated surface, severity: medium, mitigation: Keep a stable product edge visible from frame one.}
+      - {risk: Product remains unidentifiable after reveal, severity: high, mitigation: Require silhouette and category cue by 2.2 seconds.}
+    review_rules:
+      keep_criteria: [Surface movement is visible in first second, Product silhouette is identifiable by 2.2 seconds]
+      revise_criteria: [Texture is strong but reveal is slightly late, Silhouette is clear but camera move is too static]
+      drop_criteria: [Texture cannot be linked to a product, Logo or fake text becomes the focal point]
+
+  - template_id: electronics_unexpected_scale_entry_009
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H01, H03]
+      taxonomy_patterns: [motion_interrupt, product_present_proof]
+      opportunity_gaps: [motion_scale, single_action_proof]
+    hook_type: motion_interrupt
+    objective:
+      attention_goal: Use a clean scale shift to make a familiar electronic device feel surprising.
+      single_hook_action: A small device enters rapidly from extreme foreground and settles into a useful position.
+    applicable_products: [portable speaker, webcam, desk gadget, compact appliance]
+    exclusions: [fragile products that cannot safely slide, products requiring multiple props]
+    product_presence:
+      mode: enters_during_hook
+      visible_by_second: 1.4
+      recognition_standard: Device silhouette and one category cue are identifiable by 1.4 seconds.
+    first_frame:
+      description: Empty clean desk with one purposeful landing zone visible in foreground.
+      composition: Negative space dominates; entry path is unobstructed from left.
+      required_elements: [clean landing zone, unobstructed entry path, neutral desk]
+      forbidden_elements: [hidden obstacles, hands, other products, text cards]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.5, action: Hold empty landing zone for a short beat, product_state: Product absent, review_checkpoint: Negative space is intentional, not an error.}
+      - {start_seconds: 0.5, end_seconds: 1.4, action: Device enters from left with controlled parallax and settles, product_state: Product identifiable, review_checkpoint: Entry is readable and not blurred beyond recognition.}
+      - {start_seconds: 1.4, end_seconds: 3.0, action: Device remains in landing zone with subtle push-in, product_state: Product stable, review_checkpoint: No second action is introduced.}
+    camera:
+      framing: medium desk shot with foreground landing zone
+      movement: fixed camera; product performs one lateral entry
+      focus_behavior: Focus shifts to product only after entry
+      movement_limits: One entry path, no bounce, no spin, no second object
+    attention_mechanism:
+      primary: unexpected high-to-low scale entry
+      viewer_question: What object is arriving so decisively?
+      measurable_attention_event: Product enters before 1.4 seconds and settles without leaving frame.
+    prompt_variables:
+      - {name: product_form, description: Device shape, example: compact cylindrical speaker, required: true}
+      - {name: entry_direction, description: Single entry direction, example: left to right, required: true}
+      - {name: landing_surface, description: Surface for final position, example: clean walnut desk, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no collision, no extra products, no spinning object]
+    generation_risks:
+      - {risk: Fast entry causes product blur or shape change, severity: high, mitigation: Use a short but bounded lateral path and a 0.3 second settle.}
+      - {risk: Object appears from an impossible location, severity: medium, mitigation: Keep the entry lane fully visible from frame one.}
+    review_rules:
+      keep_criteria: [Entry begins after the opening beat and product is identifiable by 1.4 seconds, Product settles inside the landing zone]
+      revise_criteria: [Entry is clear but too slow, Product settles but the final position is partly cropped]
+      drop_criteria: [Product cannot be identified during entry, Product collides, duplicates, or exits frame]
+
+  - template_id: electronics_user_hand_single_gesture_010
+    version: "1.0.0"
+    category: consumer_electronics
+    source_traceability:
+      audited_hook_ids: [H06, H07, H10]
+      taxonomy_patterns: [interaction_first, product_present_proof]
+      opportunity_gaps: [single_action_proof, reviewable_negative_constraints]
+    hook_type: interaction_first
+    objective:
+      attention_goal: Show one human gesture that proves a device response while limiting hand-generation risk.
+      single_hook_action: One finger taps a physical control and the device responds with one visible movement.
+    applicable_products: [desk switch, physical remote, mechanical device control]
+    exclusions: [touchscreen UI, multiple hands, multi-step setup, tiny unreadable controls]
+    product_presence:
+      mode: present_first_frame
+      visible_by_second: 0.0
+      recognition_standard: Device body and physical control are visible before the finger enters.
+    first_frame:
+      description: Device with one large physical control centered on a clean surface; hand is initially out of frame.
+      composition: Control in center, device body visible, tap path unobstructed.
+      required_elements: [one device, one physical control, one hand entering later]
+      forbidden_elements: [second hand, touchscreen, labels, multiple controls being used]
+    timeline_0_3s:
+      - {start_seconds: 0.0, end_seconds: 0.7, action: Hold device and control before interaction, product_state: Product fully visible, review_checkpoint: Control is recognizable without text.}
+      - {start_seconds: 0.7, end_seconds: 1.4, action: One finger taps control once, product_state: Hand briefly overlaps control, review_checkpoint: Finger count and contact are clear.}
+      - {start_seconds: 1.4, end_seconds: 3.0, action: Device makes one visible physical response and hand exits, product_state: Product unobstructed, review_checkpoint: Response is visible without a UI overlay.}
+    camera:
+      framing: close frontal product shot
+      movement: locked camera with no reframing
+      focus_behavior: Control and product stay sharp; hand may be slightly softer
+      movement_limits: One hand, one tap, one physical response; no screen UI
+    attention_mechanism:
+      primary: human gesture causes immediate physical proof
+      viewer_question: What will happen after the tap?
+      measurable_attention_event: Tap occurs by 1.4 seconds and response begins immediately afterward.
+    prompt_variables:
+      - {name: control_type, description: Physical control form, example: large rotary button, required: true}
+      - {name: response_motion, description: Visible response, example: indicator ring lights once, required: true}
+      - {name: hand_description, description: Neutral hand appearance, example: one adult index finger, required: true}
+    negative_constraints: [no logos, no readable text, no subtitles, no touchscreen UI, no second hand, no extra fingers, no repeated taps]
+    generation_risks:
+      - {risk: Hand or finger anatomy deforms, severity: high, mitigation: Show only one index finger for a short contact and keep the control large.}
+      - {risk: Response becomes an unrelated animation, severity: medium, mitigation: Specify one physical or localized indicator response.}
+    review_rules:
+      keep_criteria: [Control is visible before hand enters, One tap and one device response are both clear by 2.0 seconds]
+      revise_criteria: [Gesture is clear but hand briefly obscures product, Response is visible but starts too late]
+      drop_criteria: [Extra fingers or hands appear, Device response depends on generated text or a UI screen]

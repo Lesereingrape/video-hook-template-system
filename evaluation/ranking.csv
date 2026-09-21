@@ -1,0 +1,11 @@
+rank,template_id,attention_potential,sku_reusability,generation_feasibility,category_fit,weighted_score,test_priority,reason
+1,electronics_alignment_snap_001,5,5,5,5,5.00,1,"Immediate single action, broad charger applicability, and low visual ambiguity."
+2,electronics_light_switch_snap_003,4,5,5,5,4.70,2,"Clear state change, easy fixed-camera generation, and broad lighting-product reuse."
+3,electronics_screenless_spec_pulse_007,4,4,5,5,4.45,3,"Physical proof avoids UI text and is feasible across connected devices."
+4,electronics_hinge_fold_reveal_002,4,4,3,5,3.95,4,"Strong mechanical proof but hinge continuity is a meaningful generation risk."
+5,electronics_unexpected_scale_entry_009,5,3,3,4,3.80,5,"High interruption potential but fast entry can compromise product identity."
+6,electronics_macro_surface_push_008,4,4,3,4,3.75,6,"Distinctive material hook, but product identification and surface continuity need testing."
+7,electronics_cable_snap_order_005,4,4,3,4,3.75,7,"Simple action with cable duplication risk."
+8,electronics_problem_to_product_floor_006,4,4,2,5,3.70,8,"Strong pain mechanism, but navigation and delayed reveal create high failure risk."
+9,electronics_user_hand_single_gesture_010,4,3,2,4,3.25,9,"Useful interaction proof but hand anatomy and timing add risk."
+10,electronics_liquid_vortex_macro_004,4,3,2,4,3.25,10,"Visually distinctive but liquid continuity and product reveal are difficult to generate consistently."

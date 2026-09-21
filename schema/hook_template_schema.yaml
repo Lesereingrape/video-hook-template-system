@@ -1,0 +1,179 @@
+# Draft contract for every reusable Hook Template.
+# The final catalog will use this contract consistently.
+schema_version: "1.0"
+contract_name: video_hook_template
+time_boundary:
+  duration_seconds: 3.0
+  start_seconds: 0.0
+  end_seconds: 3.0
+  rule: No template may specify a full ad, CTA, offer, or post-hook story.
+
+required_fields:
+  - template_id
+  - version
+  - category
+  - source_traceability
+  - hook_type
+  - objective
+  - applicable_products
+  - product_presence
+  - first_frame
+  - timeline_0_3s
+  - camera
+  - attention_mechanism
+  - prompt_variables
+  - negative_constraints
+  - generation_risks
+  - review_rules
+
+field_contract:
+  template_id:
+    type: string
+    rule: Unique stable snake_case identifier ending in a three-digit sequence.
+    example: electronics_alignment_snap_001
+  version:
+    type: string
+    rule: Semantic version string; increment when the behavior or review rules change.
+  category:
+    type: string
+    allowed_values:
+      - consumer_electronics
+    rule: All catalog entries must use the same category.
+  source_traceability:
+    type: object
+    required:
+      - audited_hook_ids
+      - taxonomy_patterns
+      - opportunity_gaps
+    rule: Links the new template to observed gallery evidence; prevents random ideas.
+  hook_type:
+    type: string
+    allowed_values:
+      - product_present_proof
+      - problem_first_reveal
+      - interaction_first
+      - transformation_first
+      - motion_interrupt
+      - texture_first
+    rule: Must describe the attention structure, not a product feature.
+  objective:
+    type: object
+    required:
+      - attention_goal
+      - single_hook_action
+    rule: Defines the one observable opening action and the reason to stop scrolling.
+  applicable_products:
+    type: list[string]
+    min_items: 2
+    rule: Product forms or SKU types that can reuse the template.
+  exclusions:
+    type: list[string]
+    rule: Product forms or conditions that should not use the template.
+  product_presence:
+    type: object
+    required:
+      - mode
+      - visible_by_second
+      - recognition_standard
+    mode_allowed_values:
+      - present_first_frame
+      - enters_during_hook
+      - implied_then_revealed
+    visible_by_second:
+      type: number
+      range: 0.0..3.0
+      rule: The latest time at which the product must be visually identifiable.
+    recognition_standard:
+      type: string
+      rule: Observable description of what counts as product identification.
+  first_frame:
+    type: object
+    required:
+      - description
+      - composition
+      - required_elements
+      - forbidden_elements
+  timeline_0_3s:
+    type: list[object]
+    min_items: 2
+    item_required:
+      - start_seconds
+      - end_seconds
+      - action
+      - product_state
+      - review_checkpoint
+    rule: Ordered intervals must start at 0.0, end at 3.0, and not overlap.
+  camera:
+    type: object
+    required:
+      - framing
+      - movement
+      - focus_behavior
+      - movement_limits
+    rule: Avoid non-operational adjectives such as “dynamic” without a measurable movement.
+  attention_mechanism:
+    type: object
+    required:
+      - primary
+      - viewer_question
+      - measurable_attention_event
+  prompt_variables:
+    type: list[object]
+    item_required:
+      - name
+      - description
+      - example
+      - required
+    rule: Every variable used in an executable prompt must be defined here.
+  negative_constraints:
+    type: list[string]
+    min_items: 4
+    rule: Explicitly exclude text, logos, extra products, and known category-specific artifacts where relevant.
+  generation_risks:
+    type: list[object]
+    min_items: 2
+    item_required:
+      - risk
+      - severity
+      - mitigation
+    severity_allowed_values:
+      - low
+      - medium
+      - high
+  review_rules:
+    type: object
+    required:
+      - keep_criteria
+      - revise_criteria
+      - drop_criteria
+    criteria_type: list[string]
+    min_items_per_outcome: 2
+    rule: Criteria must be observable in the rendered 0–3 second result, not subjective praise.
+
+validation_rules:
+  - Exactly 10 catalog entries are required for a complete catalog.
+  - All template_id values must be unique.
+  - All entries must use category consumer_electronics.
+  - timeline_0_3s must cover exactly 0.0–3.0 seconds without gaps or overlaps.
+  - product_presence.visible_by_second must be between 0.0 and 3.0.
+  - Every entry must contain at least one negative constraint about logos or readable text.
+  - Every entry must contain Keep, Revise, and Drop criteria.
+  - No criterion may evaluate content outside the opening three seconds.
+  - No template may require a paid API, internal product API, or unprovided asset.
+
+generation_review_separation:
+  generation_spec:
+    uses:
+      - first_frame
+      - timeline_0_3s
+      - camera
+      - prompt_variables
+      - negative_constraints
+  evaluation_spec:
+    uses:
+      - fixed_time_checkpoints
+      - product_presence.recognition_standard
+      - attention_mechanism.measurable_attention_event
+      - review_rules
+      - generation_risks
+    rule: The reviewer judges rendered evidence at fixed checkpoints; it does not grade whether the prompt merely sounds plausible.

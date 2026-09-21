@@ -1,0 +1,22 @@
+prompt_id: prompt_03_macro_surface_push
+source_template_id: electronics_macro_surface_push_008
+purpose: executable 0-3 second generation prompt
+product_inputs:
+  material: brushed dark aluminum
+  product_silhouette: over-ear headphone arc
+  light_direction: narrow light from upper left
+prompt: >-
+  Generate exactly a 3-second vertical e-commerce video, limited to the opening hook.
+  Begin with an extreme macro of brushed dark aluminum on one over-ear headphone arc;
+  keep a stable product edge visible from the first frame and show no logo or marking.
+  From 0.0 to 1.0 seconds make a slow controlled linear push across the surface so the
+  texture visibly moves relative to frame. From 1.0 to 2.2 seconds widen continuously
+  to reveal enough of the headphone silhouette for product identification. From 2.2 to
+  3.0 seconds hold the detail-and-silhouette composition. Use a narrow light from upper
+  left and a controlled focus pull from surface to silhouette. No rotation, spin, cut,
+  liquid, unrelated texture, logo, readable text, subtitles, or feature story. Stop at
+  3.0 seconds without CTA.
+review_anchor:
+  must_be_visible_by_second: 2.2
+  attention_event_deadline: 1.0
+  independent_checks: [texture movement in first second, product silhouette by 2.2 seconds, no fake text or unrelated surface]

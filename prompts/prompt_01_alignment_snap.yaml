@@ -1,0 +1,21 @@
+prompt_id: prompt_01_alignment_snap
+source_template_id: electronics_alignment_snap_001
+purpose: executable 0-3 second generation prompt
+product_inputs:
+  product_shape: round magnetic puck
+  surface_material: warm light wood
+  phone_color: graphite
+prompt: >-
+  Generate exactly a 3-second vertical e-commerce video, limited to the opening hook.
+  Close tabletop shot on a warm light-wood surface. A graphite phone and a round
+  magnetic charging puck are both identifiable in the first frame with a short visible
+  gap. From 0.0 to 0.7 seconds the phone moves in one straight, controlled path toward
+  the puck. From 0.7 to 1.5 seconds it makes one precise alignment contact without
+  bounce, merge, or deformation. From 1.5 to 3.0 seconds hold the aligned pair with a
+  subtle 5 percent forward push-in. Keep both objects sharp during contact. No orbit,
+  whip pan, rack focus, camera shake, logo, readable text, subtitles, notification UI,
+  extra device, or cable tangle. Stop at 3.0 seconds; do not add a CTA or full product story.
+review_anchor:
+  must_be_visible_by_second: 0.0
+  attention_event_deadline: 1.5
+  independent_checks: [first-frame product identity, single alignment contact, no text or extra device]
